@@ -63,6 +63,8 @@ pipeline {
                     echo "GroupId: ${groupId}, ArtifactId: ${artifactId}, Version: ${version}"
                     echo "JAR Path: ${env.JAR_FILE_PATH}"
 
+                    pom = null
+
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
@@ -75,7 +77,7 @@ pipeline {
                             [
                                 artifactId: 'artifactId',
                                 file: 'env.JAR_FILE_PATH'
-                                type: "jar",
+                                type: 'jar',
                                 classifier: ""
                             ]
                         ]
